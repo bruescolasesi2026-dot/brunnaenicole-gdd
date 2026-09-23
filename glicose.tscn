@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dvtm1xcmyvm6t"]
+
+[ext_resource type="Script" uid="uid://r5214ppffpfi" path="res://coin.gd" id="1_0t63x"]
+[ext_resource type="Texture2D" uid="uid://chtqdlmpj8nuk" path="res://glicose--removebg-preview.png" id="2_kwfq3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ebum8"]
+radius = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_io71k"]
+atlas = ExtResource("2_kwfq3")
+region = Rect2(0, 0, 666, 375)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ebum8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_io71k")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="glicose" type="Area2D" unique_id=590272532]
+script = ExtResource("1_0t63x")
+elemento = "Cl"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=738310907]
+shape = SubResource("CircleShape2D_ebum8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1345612637]
+scale = Vector2(0.40625, 0.4375)
+sprite_frames = SubResource("SpriteFrames_ebum8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

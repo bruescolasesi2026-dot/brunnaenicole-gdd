@@ -1,0 +1,158 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://configuracoes.gd" id="1_cfg"]
+[ext_resource type="FontFile" path="res://Abaddon-Light.ttf" id="2_font"]
+
+[node name="Configuracoes" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cfg")
+
+[node name="Fundo" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.035, 0.035, 0.055, 1)
+
+[node name="Margem" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = 24.0
+offset_right = -30.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 18
+
+[node name="Painel" type="PanelContainer" parent="Margem"]
+layout_mode = 2
+
+[node name="Conteudo" type="VBoxContainer" parent="Margem/Painel"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Titulo" type="Label" parent="Margem/Painel/Conteudo"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 42
+text = "Configurações"
+horizontal_alignment = 1
+
+[node name="Separador1" type="HSeparator" parent="Margem/Painel/Conteudo"]
+layout_mode = 2
+
+[node name="Scroll" type="ScrollContainer" parent="Margem/Painel/Conteudo"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Opcoes" type="VBoxContainer" parent="Margem/Painel/Conteudo/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 18
+
+[node name="AudioTitulo" type="Label" parent="Margem/Painel/Conteudo/Scroll/Opcoes"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Áudio"
+
+[node name="VolumeLinha" type="HBoxContainer" parent="Margem/Painel/Conteudo/Scroll/Opcoes"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="Margem/Painel/Conteudo/Scroll/Opcoes/VolumeLinha"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "Volume geral"
+
+[node name="VolumeSlider" type="HSlider" parent="Margem/Painel/Conteudo/Scroll/Opcoes/VolumeLinha"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+value = 80.0
+
+[node name="VolumeValor" type="Label" parent="Margem/Painel/Conteudo/Scroll/Opcoes/VolumeLinha"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "80%"
+horizontal_alignment = 2
+
+[node name="MutarCheck" type="CheckBox" parent="Margem/Painel/Conteudo/Scroll/Opcoes"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Silenciar áudio"
+
+[node name="VideoTitulo" type="Label" parent="Margem/Painel/Conteudo/Scroll/Opcoes"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Vídeo"
+
+[node name="ResolucaoLinha" type="HBoxContainer" parent="Margem/Painel/Conteudo/Scroll/Opcoes"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="Margem/Painel/Conteudo/Scroll/Opcoes/ResolucaoLinha"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "Resolução"
+
+[node name="ResolucaoOption" type="OptionButton" parent="Margem/Painel/Conteudo/Scroll/Opcoes/ResolucaoLinha"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(230, 42)
+layout_mode = 2
+
+[node name="TelaCheiaCheck" type="CheckBox" parent="Margem/Painel/Conteudo/Scroll/Opcoes"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Tela cheia"
+
+[node name="TeclasTitulo" type="Label" parent="Margem/Painel/Conteudo/Scroll/Opcoes"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Teclas"
+
+[node name="AvisoTecla" type="Label" parent="Margem/Painel/Conteudo/Scroll/Opcoes"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Clique em uma tecla para remapear."
+
+[node name="ListaTeclas" type="VBoxContainer" parent="Margem/Painel/Conteudo/Scroll/Opcoes"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="RestaurarTeclas" type="Button" parent="Margem/Painel/Conteudo/Scroll/Opcoes"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+text = "Restaurar teclas padrão"
+
+[node name="Separador2" type="HSeparator" parent="Margem/Painel/Conteudo"]
+layout_mode = 2
+
+[node name="Rodape" type="HBoxContainer" parent="Margem/Painel/Conteudo"]
+layout_mode = 2
+alignment = 2
+
+[node name="Voltar" type="Button" parent="Margem/Painel/Conteudo/Rodape"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(180, 48)
+layout_mode = 2
+text = "Voltar"

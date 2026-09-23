@@ -1,0 +1,131 @@
+[gd_scene format=3 uid="uid://cycoernt1r1kq"]
+
+[ext_resource type="Script" uid="uid://be1jbr3y6amaa" path="res://menu.gd" id="1_qtu10"]
+[ext_resource type="FontFile" uid="uid://duqc6tnhy5nam" path="res://Fontes/Abaddon Bold.ttf" id="2_qtu10"]
+[ext_resource type="FontFile" uid="uid://cmlup87tu8pqy" path="res://Abaddon-Light.ttf" id="3_ee4bf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_geeq3"]
+font = ExtResource("2_qtu10")
+font_size = 35
+font_color = Color(1, 0.11764706, 1, 1)
+
+[node name="menu" type="Control" unique_id=1000278922]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qtu10")
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1886620674]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="." unique_id=311741811]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -119.0
+offset_top = -68.0
+offset_right = 119.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.62658507, 0.0013971394, 0.7815654, 1)
+theme_override_font_sizes/font_size = 32
+text = "Brunna & Nicole"
+label_settings = SubResource("LabelSettings_geeq3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1644473051]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -233.0
+offset_top = 81.0
+offset_right = 233.0
+offset_bottom = 240.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1777312199]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9999998, 0.24774674, 0.9982831, 1)
+theme_override_fonts/font = ExtResource("2_qtu10")
+theme_override_font_sizes/font_size = 100
+text = "Breakdown"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=53720234]
+layout_mode = 2
+
+[node name="play" type="Button" parent="." unique_id=1167214735]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.0
+offset_top = -105.0
+offset_right = 50.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+theme_override_fonts/font = ExtResource("3_ee4bf")
+theme_override_font_sizes/font_size = 54
+text = "play"
+flat = true
+
+[node name="controls" type="Button" parent="." unique_id=1506721613]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -18.0
+offset_right = 190.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+theme_override_fonts/font = ExtResource("3_ee4bf")
+theme_override_font_sizes/font_size = 42
+text = "configurações"
+flat = true
+
+[node name="quit" type="Button" parent="." unique_id=1777973666]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = 68.0
+offset_right = 48.0
+offset_bottom = 138.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+theme_override_fonts/font = ExtResource("3_ee4bf")
+theme_override_font_sizes/font_size = 54
+text = "quit"
+flat = true
+
+[connection signal="pressed" from="play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]

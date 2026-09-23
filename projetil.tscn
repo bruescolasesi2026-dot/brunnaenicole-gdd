@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dtrjuiviq57lx"]
+
+[ext_resource type="Script" uid="uid://c8uomy7mcbmna" path="res://projetil.gd" id="1_4dvx7"]
+[ext_resource type="Texture2D" uid="uid://drcrcbbf8fobf" path="res://Flying Demon 2D Pixel Art/Flying Demon 2D Pixel Art/Sprites/projectile.png" id="2_e138m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d76vc"]
+atlas = ExtResource("2_e138m")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4dvx7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d76vc")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e138m"]
+
+[node name="Projetil" type="Area2D" unique_id=793722140 groups=["inimigos"]]
+script = ExtResource("1_4dvx7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=706481249]
+position = Vector2(9.536743e-07, 0)
+scale = Vector2(0.29452056, 0.3890086)
+sprite_frames = SubResource("SpriteFrames_4dvx7")
+autoplay = "default"
+frame_progress = 0.4906839
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=229406824]
+shape = SubResource("CircleShape2D_e138m")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

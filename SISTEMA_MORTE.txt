@@ -1,0 +1,40 @@
+SISTEMA DE MORTE / RESPAWN
+==========================
+
+Implementado no projeto:
+
+1. morte.tscn
+   - Area2D
+   - CollisionShape2D grande
+   - Detecta o Player e chama morrer().
+
+2. Level1.tscn e level_2.tscn
+   - A cena Morte já está instanciada abaixo do mapa.
+   - Posição atual: (1200, 700).
+   - A área cobre uma faixa larga da fase.
+
+3. player.gd
+   - Guarda automaticamente a posição inicial como ponto de respawn.
+   - Ao cair, perde 1 vida.
+   - Com vidas restantes: reaparece no início sem recarregar a fase.
+   - Os átomos/moléculas já coletados são preservados nesse respawn.
+   - Ao chegar a 0 vidas: inventário químico é limpo, vidas voltam para 3 e a fase reinicia.
+
+4. Global.gd
+   - VIDAS_INICIAIS = 3
+   - perder_vida()
+   - resetar_vidas()
+   - reiniciar_tentativa()
+   - novo_jogo()
+
+5. hud.gd
+   - Atualiza VIDA imediatamente quando o jogador cai.
+
+6. menu.gd
+   - PLAY inicia uma partida limpa.
+
+PARA USAR MORTE EM UMA NOVA FASE
+--------------------------------
+Arraste morte.tscn para a fase e coloque a área abaixo de todos os pisos.
+Se precisar, altere apenas a posição ou o tamanho da CollisionShape2D.
+Não é necessário conectar nada ao Player.

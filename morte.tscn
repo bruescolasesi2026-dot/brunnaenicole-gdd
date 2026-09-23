@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://morte.gd" id="1_morte"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_morte"]
+size = Vector2(7000, 300)
+
+[node name="Morte" type="Area2D"]
+collision_layer = 0
+collision_mask = 1
+monitoring = true
+monitorable = false
+script = ExtResource("1_morte")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_morte")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

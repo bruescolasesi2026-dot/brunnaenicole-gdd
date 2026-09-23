@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://vs1oudbh01ry"]
+
+[ext_resource type="Script" uid="uid://bs1axoax8uogf" path="res://game_over.gd" id="1_y26ei"]
+
+[node name="GameOver" type="Control" unique_id=1679019094]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_y26ei")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=406393641]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 9.0
+offset_right = 1352.0
+offset_bottom = 724.0
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1722069119]
+layout_mode = 0
+offset_left = 435.0
+offset_top = 230.0
+offset_right = 850.0
+offset_bottom = 373.0
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=171447064]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9382396, 0.43675736, 0.9008018, 1)
+theme_override_colors/font_outline_color = Color(0.85490197, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "   Game Over "
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=278645411]
+layout_mode = 2
+text = "tentar novamente?"
+
+[node name="Button" type="Button" parent="VBoxContainer/Button" unique_id=93179813]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 56.0
+offset_right = 164.0
+offset_bottom = 104.0
+text = "Sim"
+
+[node name="Button2" type="Button" parent="VBoxContainer/Button" unique_id=2119105457]
+layout_mode = 0
+offset_left = 247.0
+offset_top = 57.0
+offset_right = 322.0
+offset_bottom = 105.0
+text = "Não"
+
+[connection signal="pressed" from="VBoxContainer/Button/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button/Button2" to="." method="_on_button_2_pressed"]

@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://do5l3yhmvacow"]
+
+[ext_resource type="Script" uid="uid://r5214ppffpfi" path="res://coin.gd" id="1_n7w8l"]
+[ext_resource type="Texture2D" uid="uid://c4y3dqv6c8267" path="res://elementos/hidrogenio_32x32.png" id="2_h0k8j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ebum8"]
+radius = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2cm4"]
+atlas = ExtResource("2_h0k8j")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ebum8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2cm4")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="hidrogen" type="Area2D" unique_id=590272532]
+position = Vector2(145, -7)
+script = ExtResource("1_n7w8l")
+elemento = "H"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=738310907]
+shape = SubResource("CircleShape2D_ebum8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1807434807]
+position = Vector2(-4.7683716e-07, -9.536743e-07)
+scale = Vector2(0.4375, 0.4375)
+sprite_frames = SubResource("SpriteFrames_ebum8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

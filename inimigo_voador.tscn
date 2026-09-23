@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://35clojxott3w"]
+
+[ext_resource type="Script" uid="uid://t4s2an27njcr" path="res://inimigo_voador.gd" id="1_3vlqp"]
+[ext_resource type="PackedScene" uid="uid://dtrjuiviq57lx" path="res://projetil.tscn" id="2_gcfeu"]
+[ext_resource type="Texture2D" uid="uid://b148v5a07ob5i" path="res://Flying Demon 2D Pixel Art/Flying Demon 2D Pixel Art/Sprites/without_outline/FLYING.png" id="3_gbg7h"]
+[ext_resource type="Texture2D" uid="uid://ot0xq8y6o6g8" path="res://Flying Demon 2D Pixel Art/Flying Demon 2D Pixel Art/Sprites/without_outline/ATTACK.png" id="4_fhttp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6krl"]
+atlas = ExtResource("3_gbg7h")
+region = Rect2(0, 0, 79, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vf6v"]
+atlas = ExtResource("3_gbg7h")
+region = Rect2(79, 0, 79, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt3yo"]
+atlas = ExtResource("3_gbg7h")
+region = Rect2(158, 0, 79, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xj43q"]
+atlas = ExtResource("3_gbg7h")
+region = Rect2(237, 0, 79, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r544n"]
+atlas = ExtResource("4_fhttp")
+region = Rect2(0, 0, 79, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnoh6"]
+atlas = ExtResource("4_fhttp")
+region = Rect2(79, 0, 79, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aro62"]
+atlas = ExtResource("4_fhttp")
+region = Rect2(158, 0, 79, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6uxnd"]
+atlas = ExtResource("4_fhttp")
+region = Rect2(237, 0, 79, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wh2th"]
+atlas = ExtResource("4_fhttp")
+region = Rect2(316, 0, 79, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_je6lp"]
+atlas = ExtResource("4_fhttp")
+region = Rect2(395, 0, 79, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcugt"]
+atlas = ExtResource("4_fhttp")
+region = Rect2(474, 0, 79, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxx41"]
+atlas = ExtResource("4_fhttp")
+region = Rect2(553, 0, 79, 69)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d76vc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6krl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vf6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rt3yo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xj43q")
+}],
+"loop": 1,
+"name": &"fly",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r544n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnoh6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aro62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6uxnd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wh2th")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_je6lp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcugt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fxx41")
+}],
+"loop": 1,
+"name": &"shoot",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1optb"]
+radius = 25.31798
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ebum8"]
+radius = 146.56398
+
+[node name="InimigoVoador" type="CharacterBody2D" unique_id=1942960331]
+script = ExtResource("1_3vlqp")
+cena_projetil = ExtResource("2_gcfeu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=236326312]
+scale = Vector2(0.5923077, 0.60126585)
+sprite_frames = SubResource("SpriteFrames_d76vc")
+animation = &"shoot"
+autoplay = "fly"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=44283459]
+rotation = -0.03242437
+shape = SubResource("CircleShape2D_1optb")
+disabled = true
+
+[node name="DetectionZone" type="Area2D" parent="." unique_id=976680304]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionZone" unique_id=1910085751]
+shape = SubResource("CircleShape2D_ebum8")
+
+[node name="TimerTiro" type="Timer" parent="." unique_id=475620850]
+wait_time = 1.5
+autostart = true
+
+[node name="PontoDeDisparo" type="Node2D" parent="." unique_id=259753037]
+rotation = 3.600923
+
+[connection signal="body_entered" from="DetectionZone" to="." method="_on_detection_zone_body_entered"]
+[connection signal="timeout" from="TimerTiro" to="." method="_on_timer_tiro_timeout"]

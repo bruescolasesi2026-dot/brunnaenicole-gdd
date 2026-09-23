@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://d2ian8q8td5y3"]
+
+[ext_resource type="Script" uid="uid://dtmoc35u7vhjo" path="res://music_global.gd" id="1_mid1h"]
+[ext_resource type="AudioStream" uid="uid://d2p0ewskyhbut" path="res://freesound_community-8bittownthemesong-59266.mp3.mp3" id="1_p7suu"]
+
+[node name="MusicGlobal" type="AudioStreamPlayer2D" unique_id=861796816]
+stream = ExtResource("1_p7suu")
+volume_db = 5.472
+autoplay = true
+script = ExtResource("1_mid1h")
