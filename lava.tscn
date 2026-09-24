@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bv7dusykcytsl"]
+
+[ext_resource type="Script" uid="uid://cmbwbjek38ahw" path="res://lava.gd" id="1_34hvj"]
+
+[node name="Lava" type="Area2D" unique_id=1495342417]
+script = ExtResource("1_34hvj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1710238465]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=900821047]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,100 +1,76 @@
 [gd_scene format=3 uid="uid://q3xb8ganm7x1"]
 
 [ext_resource type="Script" uid="uid://binbhrlrhheqr" path="res://player.gd" id="1_hqtel"]
-[ext_resource type="Texture2D" uid="uid://0sbur5qipn4x" path="res://personagem_fem_idle_spritesheet.png" id="2_hqtel"]
-[ext_resource type="Texture2D" uid="uid://cfigrqgo51l7m" path="res://personagem_fem_jump_spritesheet (1).png" id="3_sweqy"]
-[ext_resource type="Texture2D" uid="uid://yjqxhnogkyib" path="res://personagem_fem_run_spritesheet (1).png" id="4_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://bl48uhwxhvkwt" path="res://FallenOrder-SeveredFang/SpriteSheet/SeveredFangIdle001-Sheet.png" id="2_hqtel"]
+[ext_resource type="Texture2D" uid="uid://cdposkg7gfxjq" path="res://FallenOrder-SeveredFang/SpriteSheet/SeveredFangHurt001-Sheet.png" id="3_sweqy"]
+[ext_resource type="Texture2D" uid="uid://cm742wq4mbbse" path="res://FallenOrder-SeveredFang/SpriteSheet/SeveredFangWalk001-Sheet.png" id="4_2hs0m"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s505j"]
 radius = 6.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1jxqw"]
 atlas = ExtResource("2_hqtel")
-region = Rect2(0, 0, 32, 32)
+region = Rect2(0, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dw050"]
 atlas = ExtResource("2_hqtel")
-region = Rect2(32, 0, 32, 32)
+region = Rect2(128, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b26j0"]
 atlas = ExtResource("2_hqtel")
-region = Rect2(64, 0, 32, 32)
+region = Rect2(256, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n7ghd"]
 atlas = ExtResource("2_hqtel")
-region = Rect2(96, 0, 32, 32)
+region = Rect2(384, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nvl01"]
 atlas = ExtResource("2_hqtel")
-region = Rect2(128, 0, 32, 32)
+region = Rect2(512, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ivps1"]
 atlas = ExtResource("2_hqtel")
-region = Rect2(160, 0, 32, 32)
+region = Rect2(640, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_urp6f"]
-atlas = ExtResource("2_hqtel")
-region = Rect2(192, 0, 32, 32)
+atlas = ExtResource("3_sweqy")
+region = Rect2(128, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bwjto"]
-atlas = ExtResource("2_hqtel")
-region = Rect2(224, 0, 32, 32)
+atlas = ExtResource("3_sweqy")
+region = Rect2(256, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_606se"]
-atlas = ExtResource("3_sweqy")
-region = Rect2(0, 0, 32, 32)
+atlas = ExtResource("4_2hs0m")
+region = Rect2(0, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u1c27"]
-atlas = ExtResource("3_sweqy")
-region = Rect2(64, 0, 32, 32)
+atlas = ExtResource("4_2hs0m")
+region = Rect2(128, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_op7ga"]
-atlas = ExtResource("3_sweqy")
-region = Rect2(96, 0, 32, 32)
+atlas = ExtResource("4_2hs0m")
+region = Rect2(256, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q13i1"]
-atlas = ExtResource("3_sweqy")
-region = Rect2(128, 0, 32, 32)
+atlas = ExtResource("4_2hs0m")
+region = Rect2(384, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pylmc"]
-atlas = ExtResource("3_sweqy")
-region = Rect2(192, 0, 32, 32)
+atlas = ExtResource("4_2hs0m")
+region = Rect2(512, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pbfsw"]
-atlas = ExtResource("3_sweqy")
-region = Rect2(224, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hqtel"]
 atlas = ExtResource("4_2hs0m")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sweqy"]
-atlas = ExtResource("4_2hs0m")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2hs0m"]
-atlas = ExtResource("4_2hs0m")
-region = Rect2(64, 0, 32, 32)
+region = Rect2(640, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5tmop"]
 atlas = ExtResource("4_2hs0m")
-region = Rect2(96, 0, 32, 32)
+region = Rect2(768, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7ahtn"]
 atlas = ExtResource("4_2hs0m")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7lmhl"]
-atlas = ExtResource("4_2hs0m")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dx0e4"]
-atlas = ExtResource("4_2hs0m")
-region = Rect2(192, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jm5j8"]
-atlas = ExtResource("4_2hs0m")
-region = Rect2(224, 0, 32, 32)
+region = Rect2(896, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sweqy"]
 animations = [{
@@ -116,7 +92,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ivps1")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_urp6f")
 }, {
@@ -124,7 +105,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_bwjto")
 }],
 "loop": 1,
-"name": &"idle",
+"name": &"jump",
 "speed": 5.0
 }, {
 "frames": [{
@@ -145,35 +126,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pbfsw")
-}],
-"loop": 1,
-"name": &"jump",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hqtel")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sweqy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2hs0m")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5tmop")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7ahtn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7lmhl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dx0e4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jm5j8")
 }],
 "loop": 1,
 "name": &"run",
@@ -190,8 +148,9 @@ shape = SubResource("CapsuleShape2D_s505j")
 zoom = Vector2(2.7, 2.7)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=214238138]
-scale = Vector2(1.0486329, 1.1512696)
+position = Vector2(2, 3.0000005)
+scale = Vector2(0.67968756, 0.65625)
 sprite_frames = SubResource("SpriteFrames_sweqy")
-animation = &"run"
+animation = &"jump"
 autoplay = "idle"
-frame_progress = 0.76901567
+frame_progress = 0.19596426
