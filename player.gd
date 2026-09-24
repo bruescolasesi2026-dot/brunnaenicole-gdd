@@ -4,6 +4,9 @@ extends CharacterBody2D
 # CONFIGURAÇÕES DO PERSONAGEM
 # ============================================================
 
+@export_group("Atributos")
+@export var vida_maxima: float = 100.0
+
 @export_group("Movimentação")
 @export var velocidade_andar: float = 100.0
 @export var velocidade_correr: float = 170.0
@@ -12,8 +15,6 @@ extends CharacterBody2D
 @export var desaceleracao: float = 1600.0
 
 @export_group("Ações do Input Map")
-# Os nomes das ações ficam separados da lógica. Normalmente não é necessário
-# mudar estes nomes: o menu Configurações remapeia as teclas para o jogador.
 @export var acao_esquerda: StringName = &"move_left"
 @export var acao_direita: StringName = &"move_right"
 @export var acao_pular: StringName = &"jump"
@@ -24,6 +25,7 @@ extends CharacterBody2D
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
+var vida_atual: float = 100.0
 var esta_correndo: bool = false
 var morto: bool = false
 var ponto_respawn: Vector2
@@ -32,6 +34,7 @@ var gravidade: float = float(ProjectSettings.get_setting("physics/2d/default_gra
 
 func _ready() -> void:
 	ponto_respawn = global_position
+	vida_atual = vida_maxima
 
 
 func _physics_process(delta: float) -> void:
@@ -89,10 +92,22 @@ func _atualizar_animacao() -> void:
 
 
 # ============================================================
-# MORTE E RESPAWN
+# DANO, MORTE E RESPAWN
 # ============================================================
 
-# Chamada pela Area2D Morte.
+# Chamada pelos projéteis inimigos ou perigos que tiram porcentagem/pontos de vida.
+func tomar_dano(quantidade: float) -> void:
+	if morto:
+		return
+		
+	vida_atual -= quantidade
+	print("Vida do Player: ", vida_atual, " / ", vida_maxima)
+	
+	if vida_atual <= 0.0:
+		morrer()
+
+
+# Chamada pela Area2D Morte ou quando a vida chega a zero.
 func morrer() -> void:
 	if morto:
 		return
@@ -118,6 +133,7 @@ func morrer() -> void:
 func respawn() -> void:
 	global_position = ponto_respawn
 	velocity = Vector2.ZERO
+	vida_atual = vida_maxima # Restaura a vida ao renascer
 	sprite.visible = true
 	morto = false
 

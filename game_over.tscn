@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://vs1oudbh01ry"]
 
 [ext_resource type="Script" uid="uid://bs1axoax8uogf" path="res://game_over.gd" id="1_y26ei"]
+[ext_resource type="FontFile" uid="uid://duqc6tnhy5nam" path="res://Fontes/Abaddon Bold.ttf" id="2_ccer4"]
+[ext_resource type="FontFile" uid="uid://cmlup87tu8pqy" path="res://Abaddon-Light.ttf" id="3_8u835"]
 
 [node name="GameOver" type="Control" unique_id=1679019094]
 layout_mode = 3
@@ -28,28 +30,32 @@ offset_bottom = 373.0
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9382396, 0.43675736, 0.9008018, 1)
 theme_override_colors/font_outline_color = Color(0.85490197, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ccer4")
 theme_override_font_sizes/font_size = 64
 text = "   Game Over "
 
 [node name="Button" type="Button" parent="VBoxContainer" unique_id=278645411]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_8u835")
 text = "tentar novamente?"
 
-[node name="Button" type="Button" parent="VBoxContainer/Button" unique_id=93179813]
+[node name="ButtonSim" type="Button" parent="VBoxContainer/Button" unique_id=93179813]
 layout_mode = 0
 offset_left = 87.0
 offset_top = 56.0
 offset_right = 164.0
 offset_bottom = 104.0
+theme_override_fonts/font = ExtResource("2_ccer4")
 text = "Sim"
 
-[node name="Button2" type="Button" parent="VBoxContainer/Button" unique_id=2119105457]
+[node name="ButtonNão" type="Button" parent="VBoxContainer/Button" unique_id=2119105457]
 layout_mode = 0
 offset_left = 247.0
 offset_top = 57.0
 offset_right = 322.0
 offset_bottom = 105.0
+theme_override_fonts/font = ExtResource("2_ccer4")
 text = "Não"
 
-[connection signal="pressed" from="VBoxContainer/Button/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button/ButtonSim" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button/ButtonNão" to="." method="_on_button_2_pressed"]

@@ -423,7 +423,7 @@ next_scene_path = "uid://cjll4p8uppflq"
 [node name="HUD" parent="." unique_id=1402216755 instance=ExtResource("2_15wb7")]
 
 [node name="Player" parent="." unique_id=296194923 instance=ExtResource("3_eoq84")]
-position = Vector2(2, 116)
+position = Vector2(-6, 124)
 
 [node name="Coin" parent="." unique_id=590272532 instance=ExtResource("4_yl73a")]
 position = Vector2(145, -7)

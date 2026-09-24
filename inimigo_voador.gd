@@ -57,7 +57,7 @@ func _on_animation_finished() -> void:
 
 # Entrou na área de detecção
 func _on_detection_zone_body_entered(body: Node2D) -> void:
-	print("Corpo entrou na área de deteção: ", body.name) # Mostra o nome do nó no Console
+	print("Corpo entrou na área de deteção: ", body.name)
 	if body.is_in_group("player") or body.name == "Player":
 		player = body
 		if timer_tiro.is_stopped():
