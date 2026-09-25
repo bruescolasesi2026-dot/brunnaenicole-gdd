@@ -437,7 +437,7 @@ position = Vector2(1366, 111)
 position = Vector2(1223, -29)
 
 [node name="Morte" parent="." unique_id=865108564 instance=ExtResource("11_morte")]
-position = Vector2(1082, 402)
+position = Vector2(1108, 441)
 
 [node name="Timer" type="Timer" parent="." unique_id=2092209570]
 wait_time = 60.0
@@ -446,7 +446,7 @@ autostart = true
 [node name="MenuPause" parent="." unique_id=639608284 instance=ExtResource("14_a2cb0")]
 
 [node name="InimigoVoador" parent="." unique_id=1942960331 instance=ExtResource("15_3gjqj")]
-position = Vector2(-317, -254)
+position = Vector2(807, -60)
 
 [node name="MusicGlobal" parent="." unique_id=861796816 instance=ExtResource("15_g56ap")]
 

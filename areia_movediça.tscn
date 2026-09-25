@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dpm7vnrdfd1na"]
+
+[ext_resource type="Script" uid="uid://coiias6nicbo1" path="res://areia_movediça.gd" id="1_lopxu"]
+[ext_resource type="Texture2D" uid="uid://dghnguaaixhs" path="res://SandBrown.png" id="1_n86p5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_13qdw"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lopxu"]
+atlas = ExtResource("1_n86p5")
+region = Rect2(64, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xrivr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lopxu")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AreiaMovediça" type="Area2D" unique_id=831010487]
+script = ExtResource("1_lopxu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=292078402]
+shape = SubResource("RectangleShape2D_13qdw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1775439153]
+sprite_frames = SubResource("SpriteFrames_xrivr")

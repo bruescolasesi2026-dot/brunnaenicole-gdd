@@ -14,6 +14,10 @@ extends CharacterBody2D
 @export var aceleracao: float = 1200.0
 @export var desaceleracao: float = 1600.0
 
+@export_group("Areia Movediça")
+@export var velocidade_afundar_areia: float = 40.0
+@export var forca_pulo_areia: float = -200.0
+
 @export_group("Ações do Input Map")
 @export var acao_esquerda: StringName = &"move_left"
 @export var acao_direita: StringName = &"move_right"
@@ -28,11 +32,13 @@ extends CharacterBody2D
 var vida_atual: float = 100.0
 var esta_correndo: bool = false
 var morto: bool = false
+var esta_na_areia: bool = false
 var ponto_respawn: Vector2
 var gravidade: float = float(ProjectSettings.get_setting("physics/2d/default_gravity", 980.0))
 
 
 func _ready() -> void:
+	add_to_group("player") # Garante que o Player é reconhecido pelo grupo "player"
 	ponto_respawn = global_position
 	vida_atual = vida_maxima
 
@@ -44,6 +50,7 @@ func _physics_process(delta: float) -> void:
 	_aplicar_gravidade(delta)
 	_processar_pulo()
 	_processar_movimento_horizontal(delta)
+	_processar_efeito_areia()
 	move_and_slide()
 	_atualizar_direcao_sprite()
 	_atualizar_animacao()
@@ -55,8 +62,12 @@ func _aplicar_gravidade(delta: float) -> void:
 
 
 func _processar_pulo() -> void:
-	if Input.is_action_just_pressed(acao_pular) and is_on_floor():
-		velocity.y = forca_pulo
+	if Input.is_action_just_pressed(acao_pular):
+		if is_on_floor():
+			velocity.y = forca_pulo
+		elif esta_na_areia:
+			# Permite saltar repetidamente para conseguir emergir da areia movediça
+			velocity.y = forca_pulo_areia
 
 
 func _processar_movimento_horizontal(delta: float) -> void:
@@ -64,9 +75,20 @@ func _processar_movimento_horizontal(delta: float) -> void:
 	esta_correndo = Input.is_action_pressed(acao_correr)
 
 	var velocidade_atual: float = velocidade_correr if esta_correndo else velocidade_andar
+	
+	# Se estiver na areia movediça, reduz a velocidade de caminhada
+	if esta_na_areia:
+		velocidade_atual *= 0.4
+
 	var alvo: float = direcao * velocidade_atual
 	var taxa: float = aceleracao if direcao != 0.0 else desaceleracao
 	velocity.x = move_toward(velocity.x, alvo, taxa * delta)
+
+
+func _processar_efeito_areia() -> void:
+	if esta_na_areia and velocity.y > 0.0:
+		# Suporta e desacelera a queda enquanto afunda na areia
+		velocity.y = min(velocity.y, velocidade_afundar_areia)
 
 
 func _atualizar_direcao_sprite() -> void:
@@ -80,7 +102,7 @@ func _atualizar_animacao() -> void:
 	if morto:
 		return
 
-	if not is_on_floor():
+	if not is_on_floor() and not esta_na_areia:
 		sprite.speed_scale = 1.0
 		sprite.play("jump")
 	elif absf(velocity.x) > 1.0:
@@ -95,7 +117,6 @@ func _atualizar_animacao() -> void:
 # DANO, MORTE E RESPAWN
 # ============================================================
 
-# Chamada pelos projéteis inimigos ou perigos que tiram porcentagem/pontos de vida.
 func tomar_dano(quantidade: float) -> void:
 	if morto:
 		return
@@ -107,12 +128,12 @@ func tomar_dano(quantidade: float) -> void:
 		morrer()
 
 
-# Chamada pela Area2D Morte ou quando a vida chega a zero.
 func morrer() -> void:
 	if morto:
 		return
 
 	morto = true
+	esta_na_areia = false
 	velocity = Vector2.ZERO
 	Global.perder_vida()
 	sprite.visible = false
@@ -133,7 +154,7 @@ func morrer() -> void:
 func respawn() -> void:
 	global_position = ponto_respawn
 	velocity = Vector2.ZERO
-	vida_atual = vida_maxima # Restaura a vida ao renascer
+	vida_atual = vida_maxima
 	sprite.visible = true
 	morto = false
 

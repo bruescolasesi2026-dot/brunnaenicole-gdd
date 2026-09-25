@@ -1,7 +1,7 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://cymtfk0yy3ema"]
 
 [ext_resource type="Script" uid="uid://r5214ppffpfi" path="res://coin.gd" id="1_0t63x"]
-[ext_resource type="Texture2D" path="res://elementos/cloro_32x32.png" id="2_0t63x"]
+[ext_resource type="Texture2D" uid="uid://cyhlqln1ucbms" path="res://elementos/cloro_32x32.png" id="2_0t63x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ebum8"]
 radius = 8.0
