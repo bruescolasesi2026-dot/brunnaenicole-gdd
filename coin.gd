@@ -1,11 +1,18 @@
 extends Area2D
 
-# Símbolo químico deste coletável.
-# Cada cena define o seu: H, O, C, Na, Cl...
 @export var elemento: String = "O"
+@export var molecula: String = ""
 
 
 func _on_body_entered(body: Node) -> void:
-	if body.name == "Player":
+	if body.name != "Player" and not body.is_in_group("player"):
+		return
+
+	if not molecula.is_empty():
+		Global.adicionar_molecula(molecula)
+	elif not elemento.is_empty():
 		Global.adicionar_elemento(elemento)
-		queue_free()
+	else:
+		return
+
+	queue_free()

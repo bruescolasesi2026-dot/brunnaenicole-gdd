@@ -7,6 +7,7 @@ const ACOES: Array[Dictionary] = [
 	{"nome": "Mover para direita", "acao": &"move_right"},
 	{"nome": "Pular", "acao": &"jump"},
 	{"nome": "Correr", "acao": &"run"},
+	{"nome": "Abrir combinações", "acao": &"craft_menu"},
 ]
 
 @onready var volume_slider: HSlider = %VolumeSlider

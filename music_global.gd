@@ -2,7 +2,7 @@ extends AudioStreamPlayer2D
 
 # Altere estes caminhos para os nomes exatos dos arquivos das suas fases
 const FASES_COM_MUSICA = [
-	"res://Level1.tscn,",
+	"res://Level1.tscn",
 	"res://level_2.tscn",
 	"res://fase_3.tscn",
 ]

@@ -424,6 +424,8 @@ tile_set = SubResource("TileSet_pkey3")
 
 [node name="Portal" parent="." unique_id=1171605812 instance=ExtResource("9_lv3ay")]
 position = Vector2(1502, -40)
+next_scene_path = "res://control.tscn"
+moleculas_requeridas = {}
 
 [node name="Enemy" parent="." unique_id=1622281104 instance=ExtResource("10_80qnk")]
 position = Vector2(550, 350)

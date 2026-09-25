@@ -22,6 +22,7 @@ const CONTROLES_PADRAO: Dictionary = {
 	&"move_right": KEY_D,
 	&"jump": KEY_SPACE,
 	&"run": KEY_SHIFT,
+	&"craft_menu": KEY_E,
 }
 
 var volume_master: float = 80.0

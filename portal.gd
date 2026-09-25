@@ -1,76 +1,58 @@
 extends Area2D
 
-# @export_file cria um botão no Inspector para escolher o arquivo da próxima cena!
-@export_file("*.tscn") var next_scene_path
+@export_file("*.tscn") var next_scene_path: String = ""
 
 @export_group("Condição do Portal")
-# Dicionário de moléculas necessárias para liberar o portal.
-# Exemplo de preenchimento no Inspector: {"H2O": 2, "CO2": 1}
 @export var moleculas_requeridas: Dictionary = {
-	"H2O": 1
+	"H2O": 1,
 }
-
-@export_group("Interface / Feedback")
-# Aceita o HUD inteiro, CanvasLayer ou o nó de Label de aviso diretamente no Inspector
-@export var label_aviso: Node 
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.name == "Player" or body.is_in_group("player"):
-		var faltantes_dict: Dictionary = _obter_moleculas_faltantes()
-		
-		# Se o dicionário de faltantes estiver vazio, o jogador tem tudo o que precisa!
-		if faltantes_dict.is_empty():
-			call_deferred("change_level")
-		else:
-			exibir_aviso(faltantes_dict)
+	if body.name != "Player" and not body.is_in_group("player"):
+		return
+
+	var faltantes: Dictionary = _obter_moleculas_faltantes()
+	if faltantes.is_empty():
+		call_deferred("change_level")
+	else:
+		exibir_aviso(faltantes)
 
 
 func _obter_moleculas_faltantes() -> Dictionary:
-	var faltam: Dictionary = {}
-	
-	for formula in moleculas_requeridas:
-		var qtd_necessaria: int = int(moleculas_requeridas[formula])
-		var qtd_possuida: int = int(Global.moleculas.get(formula, 0))
-		
-		if qtd_possuida < qtd_necessaria:
-			faltam[formula] = qtd_necessaria - qtd_possuida
-			
-	return faltam
+	var faltantes: Dictionary = {}
+
+	for formula: Variant in moleculas_requeridas:
+		var quantidade_necessaria: int = maxi(int(moleculas_requeridas[formula]), 0)
+		if quantidade_necessaria == 0:
+			continue
+
+		var quantidade_possuida: int = int(Global.moleculas.get(String(formula), 0))
+		if quantidade_possuida < quantidade_necessaria:
+			faltantes[String(formula)] = quantidade_necessaria - quantidade_possuida
+
+	return faltantes
 
 
 func change_level() -> void:
-	if next_scene_path:
-		get_tree().change_scene_to_file(next_scene_path)
-
-
-func exibir_aviso(faltantes_dict: Dictionary) -> void:
-	if not label_aviso:
+	if next_scene_path.is_empty():
+		push_warning("Portal sem próxima cena configurada.")
 		return
 
-	# Monta a mensagem formatada com todas as moléculas que ainda faltam
-	var lista_mensagens: Array = []
-	for formula in faltantes_dict:
-		lista_mensagens.append(str(faltantes_dict[formula]) + "x " + str(formula))
-		
-	var texto_mensagem: String = "Ainda falta criar: " + ", ".join(lista_mensagens) + " para abrir o portal!"
+	var erro: Error = get_tree().change_scene_to_file(next_scene_path)
+	if erro != OK:
+		push_error("Não foi possível carregar a próxima cena: %s (erro %d)" % [next_scene_path, erro])
 
-	# Procura o nó de texto correto dentro do que foi arrastado no Inspector
-	var alvo_texto: Control = null
 
-	if label_aviso is Label:
-		alvo_texto = label_aviso
-	elif "text" in label_aviso:
-		alvo_texto = label_aviso
+func exibir_aviso(faltantes: Dictionary) -> void:
+	var mensagens: Array[String] = []
+	for formula: Variant in faltantes:
+		mensagens.append("%dx %s" % [int(faltantes[formula]), String(formula)])
+
+	var texto: String = "Ainda falta criar: %s para abrir o portal!" % ", ".join(mensagens)
+	var hud: Node = get_tree().get_first_node_in_group("hud")
+
+	if hud != null and hud.has_method("mostrar_aviso"):
+		hud.call("mostrar_aviso", texto, 3.0)
 	else:
-		alvo_texto = label_aviso.find_child("*Label*", true, false)
-
-	# Exibe o texto no ecrã
-	if alvo_texto:
-		alvo_texto.text = texto_mensagem
-		alvo_texto.visible = true
-		
-		# Esconde a mensagem automaticamente após 3 segundos
-		await get_tree().create_timer(3.0).timeout
-		if is_instance_valid(alvo_texto):
-			alvo_texto.visible = false
+		push_warning(texto)
